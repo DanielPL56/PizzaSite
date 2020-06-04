@@ -11,7 +11,7 @@ namespace PizzaSite.Persistent
     {
         public static void CreateOrder(OrderDTO orderDTO)
         {
-            var db = new PizzaSiteDbEntities();
+            var db = new ApplicationDbContext();
 
             db.Orders.Add(ConverToDb(orderDTO));
             db.SaveChanges();
@@ -41,7 +41,7 @@ namespace PizzaSite.Persistent
 
         public static List<DTO.OrderDTO> GetUnCompletedOrders()
         {
-            var db = new PizzaSiteDbEntities();
+            var db = new ApplicationDbContext();
             var orders = db.Orders.Where(p => p.Completed == false).ToList();
 
             return convertToDTO(orders);
@@ -49,7 +49,7 @@ namespace PizzaSite.Persistent
 
         public static List<DTO.OrderDTO> GetCompletedOrders()
         {
-            var db = new PizzaSiteDbEntities();
+            var db = new ApplicationDbContext();
             var orders = db.Orders.Where(p => p.Completed == true).ToList();
 
             return convertToDTO(orders);
@@ -86,7 +86,7 @@ namespace PizzaSite.Persistent
 
         public static void CompleteOrder(Guid orderId)
         {
-            var db = new PizzaSiteDbEntities();
+            var db = new ApplicationDbContext();
 
             var orders = db.Orders.Where(p => p.Id == orderId);
 

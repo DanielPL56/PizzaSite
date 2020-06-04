@@ -9,9 +9,36 @@ namespace PizzaSite.Persistent
 {
     public class PriceRepository
     {
+        public static void CreatePrice(PriceDTO priceDTO)
+        {
+            var price = new Price()
+            {
+                LargeSizeCost = priceDTO.LargeSizeCost,
+                MediumSizeCost = priceDTO.MediumSizeCost,
+                SmallSizeCost = priceDTO.SmallSizeCost,
+                ThickCrustCost = priceDTO.ThickCrustCost,
+                ThinCrustCost = priceDTO.ThinCrustCost,
+                RegularCrustCost = priceDTO.RegularCrustCost,
+                GreenPepperCost = priceDTO.GreenPepperCost,
+                OnionsCost = priceDTO.OnionsCost,
+                PepperoniCost = priceDTO.PepperoniCost,
+                SausageCost = priceDTO.SausageCost
+
+            };
+
+            using (var db = new ApplicationDbContext())
+            {
+                var prices = db.Prices;
+
+                prices.Add(price);
+
+                db.SaveChanges();
+            }
+        }
+
         public static PriceDTO GetPrice()
         {
-            var db = new PizzaSiteDbEntities();
+            var db = new ApplicationDbContext();
             var prices = db.Prices.First();
 
             var priceDTO = ConvertToDTO(prices);

@@ -14,7 +14,21 @@ namespace PizzaSite.Presentation
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+            //var price = new PriceDTO()
+            //{
+            //    SmallSizeCost = 12,
+            //    MediumSizeCost = 14,
+            //    LargeSizeCost = 16,
+            //    ThickCrustCost = 2,
+            //    ThinCrustCost = 0,
+            //    RegularCrustCost = 1,
+            //    SausageCost = 2,
+            //    PepperoniCost = 1.5M,
+            //    OnionsCost = 1,
+            //    GreenPepperCost = 1
+            //};
+
+            //Domain.PizzaPriceManager.CreatePrice(price);
         }
 
         protected void CreateOrderButton_Click(object sender, EventArgs e)

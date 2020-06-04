@@ -9,6 +9,11 @@ namespace PizzaSite.Domain
 {
     public class PizzaPriceManager
     {
+        public static void CreatePrice(PriceDTO priceDTO)
+        {
+            Persistent.PriceRepository.CreatePrice(priceDTO);
+        }
+
         public static void CalculateCostOfPizza(OrderDTO orderDTO)
         {
             decimal totalCost = 0;
